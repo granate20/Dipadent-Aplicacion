@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+<meta name="description" content="Una simple aplicación para aprender a usar el Barcode Scanner">
+
+    <title>Dipadent</title>
+
+    
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet" media="screen">
+    
+    
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+	
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    
+    
+    <script src="js/jasny-bootstrap.min.js"></script>
+    
+
+  
+
+
+    
+
+    
+
+</head>
+<body>
+    
+
+<div class="container">
+    <div class="row colored"  id="login">
+        <div class="contcustom" id="formulogin">
+            <span class="fa fa-futbol-o bigicon"></span>
+            <h2>Ingreso a Dipadent</h2>
+            <div id="rlogin"></div>
+            <div>
+                <input type="text" id="username" placeholder="username">
+                <input type="password" id="password" placeholder="password">
+                <button onClick="logueo();" class="btn btn-default wide">Ingresar</button>
+
+            </div>
+        </div>
+        
+    <button class="btn btn-warning btn-block" onClick="registrar();">¿Todavía no estas registrado?</button>
+    
+    </div>
+    
+    
+     <div class="row centered-form" id="registro">
+            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Registro</h3>
+           				 <div id="rregistro"></div>
+                    </div>
+                    <div class="panel-body">
+                            <div class="form-group">
+                                <input type="text" name="nombre" id="nombre"  class="form-control input-sm" placeholder="Nombre y Apellido">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" name="email" id="email"  class="form-control input-sm" placeholder="Email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="telefono" id="telefono"  class="form-control input-sm" placeholder="Usuario">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="ciudad" id="ciudad"  class="form-control input-sm" placeholder="Usuario">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="domicilio" id="domicilio"  class="form-control input-sm" placeholder="Usuario">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="provincia" id="provincia"  class="form-control input-sm" placeholder="Usuario">
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="usuario" id="usuario"  class="form-control input-sm" placeholder="Usuario">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" name="pass" id="pass"  class="form-control input-sm" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input onClick="registro();" value="Register" class="btn btn-info btn-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+</div>
+
+<style>
+    .colored {
+        background-color: #F0EEEE;
+    }
+
+    .row {
+        padding: 20px 0px;
+    }
+
+    .bigicon {
+        font-size: 97px;
+        color: #f96145;
+    }
+
+    .contcustom {
+        text-align: center;
+        width: 300px;
+        border-radius: 0.5rem;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 10px auto;
+        background-color: white;
+        padding: 20px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 17px;
+        padding: 15px;
+        background-color: #ECF4F4;
+        border-radius: 2px;
+        border: none;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #ABABAB;
+    }
+
+    .btn {
+        border-radius: 2px;
+        padding: 10px;
+    }
+
+    .med {
+        font-size: 27px;
+        color: white;
+    }
+
+    .wide {
+        background-color: #8EB7E4;
+        width: 100%;
+        -webkit-border-top-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+        -moz-border-radius-topright: 0;
+        -moz-border-radius-bottomright: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+
+.centered-form {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.centered-form .panel {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+</style>
+    <script>
+function logueo() {
+
+
+
+
+
+	$.ajax({
+url: 'http://www.dipadent.com.ar/aplicacion/consultas/login.php?jsoncallback=?',
+type: 'GET',
+data: {
+usuario: $("#username").val(),
+password: $('#password').val(),
+},
+dataType: 'json',
+error: function(jqXHR, text_status, strError) {
+alert("No hay Conexión");
+
+},
+timeout: 60000,
+success: function(data) {
+
+
+if (data.validacion == "ok") {
+	localStorage.setItem("usuario",data.usuario);
+	localStorage.setItem("pk_usuario",data.pk_usuario);
+	
+
+$('#login').hide();
+$('#home').show();
+
+} else {
+	$('#rlogin').html('<h4>Usuario o contraseña erróneo</h4>');
+}
+
+
+
+}
+});
+
+}
+
+
+
+function registro()
+{
+	if($('#pass').val()!=$('#password_confirmation').val())
+	{
+		alert('Los Passwords ingresados no coinciden ');
+		return;
+	}
+	else
+	{
+		
+		if($('#usuario').val()!=''&&$('#nombre').val()!=''&&$('#email').val()!=''&&$('#telefono').val()!=''&&$('#ciudad').val()!=''&&$('#domicilio').val()!=''&&$('#provincia').val()!=''&&$('#pass').val()!=''&&$('#password_confirmation').val()!='')
+		{
+			
+				$.ajax({
+						url: 'http://www.dipadent.com.ar/aplicacion/consultas/registro.php?jsoncallback=?',
+						type: 'GET',
+						data: {
+						nombre: $("#nombre").val(),
+						usuario: $("#usuario").val(),
+						email: $("#email").val(),
+						telefono: $("#telefono").val(),
+						ciudad: $("#ciudad").val(),
+						domicilio: $("#domicilio").val(),
+						provincia: $("#provincia").val(),
+						pais: 'Argentina',
+						pass: $("#pass").val(),
+						},
+						dataType: 'json',
+						error: function(jqXHR, text_status, strError) {
+						alert("No hay Conexión");
+						
+						},
+						timeout: 60000,
+						success: function(data) {
+						
+						
+						if (data.validacion == "ok") {
+							localStorage.setItem("usuario",data.usuario);
+							localStorage.setItem("pk_usuario",data.pk_usuario);
+							
+							
+						
+						$('#login').hide();
+						$('#registro').hide();
+						$('#home').show();
+						$('#nombreusuario').html(data.usuario);
+						
+						} else {
+							$('#rregistro').html('<h4>El usuario o el email ya se encuentra en el sistema, utilice otro.</h4>');
+						
+						}
+						
+						
+						
+						}
+						});
+
+			
+		}
+		else alert("Complete todos los campos");
+	}
+}
+</script>
+
+
+       
+    
+<div id='home'>    
+   
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Menu</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" onClick="$('#divbuscar').show();">Dipadent | Bienvenido <div id="nombreusuario"></div></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+      
+      <ul class="nav navbar-nav navbar-right">
+           <li><a href="#" onClick="cerrarSesion();">Salir</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row-md-8">
+<div id="divbuscar">
+<input type="text" name="buscar" placeholder="BUSCAR POR TEXTO O CODIGO" id="buscar" class="form-control">
+<button class="btn btn-success btn-block" onClick="buscador();">BUSCAR</button>
+</div>
+<script>
+carrito = Array();
+
+function buscador()
+{
+	$.ajax({
+url: 'http://www.dipadent.com.ar/aplicacion/consultas/productos.php?jsoncallback=?',
+type: 'GET',
+data: {
+q: $("#buscar").val(),
+},
+dataType: 'json',
+error: function(jqXHR, text_status, strError) {
+
+	$('#resultado').html("No se puede conectar al servidor, verifique su conexión a internet.");
+
+},
+timeout: 60000,
+success: function(data) {
+
+
+if (data.validacion == "ok") {
+	
+	texto='<table class="table-bordered"><thead><th>Cod.</th><th>Producto</th><th>Agregar</th></thead>';
+	for( i in data.productos)
+	{
+		texto+='<tr><td>'+data.productos[i].codigo+'</td><td>'+data.productos[i].nombre+'</td><td><select onChange="agregar('+data.productos[i].codigo+',\''+data.productos[i].nombre+'\',this);" class="form-control"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></td></tr>';
+	}
+	texto+='</table>';
+	
+	$('#resultado').html("");
+	$('#tabla').html(texto);
+	
+} 
+else 
+{
+	$('#tabla').html('');
+	$('#resultado').html("No se encontraron Articulos");
+	
+}
+
+
+
+}
+});
+
+}
+
+function actualizar()
+{
+	if(carrito.length>0)
+	{
+		
+	$('#carro').show(); 
+	texto='<ul class="nav navbar-nav">';
+	for( i in carrito)
+	{
+		texto+='<li class="dropdown">          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"> </span> '+carrito[i].cantidad+' x '+carrito[i].nombre+' <span class="glyphicon glyphicon-pencil"> </span></a>          <ul class="dropdown-menu">            <li><a href="#" onClick="delete carrito['+i+']; actualizar();">Quitar <span class="glyphicon glyphicon-trash"></span></a></li>            <li><label>Cambiar Cantidad a: </label><select onChange="delete carrito['+i+']; agregar('+carrito[i].codigo+',\''+carrito[i].nombre+'\',this);" class="form-control"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></li>          </ul>        </li>';
+	}	
+	texto+='</ul><ul class="nav navbar-nav navbar-right">           <li><a href="#" onClick="finpedido();">Finalizar Pedido</a></li>      </ul>';
+	$('#bs-example-navbar-collapse-2').html(texto);
+	}
+	else $('#carro').hide();
+}
+
+function agregar(codigo,nombre,sele)
+{
+	producto=Array();
+	producto["codigo"]=codigo;
+	producto["nombre"]=nombre;
+	producto["cantidad"]=sele.value;
+	carrito.push(producto);
+	actualizar();
+	
+}
+
+function finpedido()
+{
+	$('#divbuscar').hide();
+		$('#resultado').html('<br><br><br> <label><strong>Seleccione forma de envio:</strong></label>    <select name="retiro" id="retiro" class="form-control" >    <option value="1" ><strong>Retiro en Local.</strong></option>    <option value="2" ><strong>Envio a domicilio.</strong></option>    </select>    <label><strong>Seleccione forma de pago:</strong></label>    <select name="pago" id="pago" class="form-control">    <option value="1"><strong>Efectivo. </strong></option>    <option value="2"><strong>Transferencia Bancaria.</strong></option>    </select> <textarea name="observaciones" id="observaciones" rows="5"  class="form-control" placeholder="OBSERVACIONES"></textarea> <button class="btn btn-success btn-block" onclick="terminarPedido();" >Finalizar pedido</button>');
+	$('#tabla').html('');
+}
+
+function terminarPedido()
+{
+	
+	$.ajax({
+						url: 'http://www.dipadent.com.ar/aplicacion/consultas/addpedido.php?jsoncallback=?',
+						type: 'GET',
+						data: {
+						usuario: localStorage.getItem("pk_usuario"),
+						retiro:$('#retiro').val(),
+						observaciones:$('#observaciones').val(),
+						pago:$('#pago').val(),
+						},
+						dataType: 'json',
+						error: function(jqXHR, text_status, strError) {
+						alert("No hay Conexión");
+						
+						},
+						timeout: 60000,
+						success: function(data) {
+						
+						auxiliar=0;
+						if (data.validacion == "ok") {
+							for (i in carrito)
+							{
+								
+								$.ajax({
+									url: 'http://www.dipadent.com.ar/aplicacion/consultas/additem.php?jsoncallback=?',
+									type: 'GET',
+									data: {
+									pedido:data.pk_pedido,
+									codigo:carrito[i]["codigo"],
+									nombre:carrito[i]["nombre"],
+									cantidad:carrito[i]["cantidad"],
+									},
+									dataType: 'json',
+									error: function(jqXHR, text_status, strError) {
+									alert("No hay Conexión");
+									
+									},
+									timeout: 60000,
+									success: function(data) {
+									
+									
+									if (data.validacion == "ok") {
+										
+									} else {
+										$('#resultado').html('<h4>El Pedido no pudo ser realizado con éxito.</h4>');
+										auxiliar=1;
+									}
+									
+									
+									
+									}
+									});
+									
+							}
+							if(auxiliar==0)
+							$('#resultado').html('<br><br><br><div class="alert alert-success">Pedido completado con éxito, puede verificar su casilla de correo para ver el estado de su pedido. Pronto nos pondremos con contacto con usted. Gracias</div>');
+							$('#tabla').html('');
+							carrito=Array();
+							actualizar();	
+												
+						$('#divbuscar').show();
+							
+						
+						} else {
+							$('#resultado').html('<h4>El Pedido no pudo ser realizado.</h4>');
+						
+						}
+						
+						
+						
+						}
+						});
+
+	
+	
+}
+
+</script>
+<div id="resultado"></div>
+
+<div class="table-responsive" id="tabla">
+</div>
+</div>
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom"  id="carro" style="background:#0CC">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+        <span class="sr-only">Menu</span>
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+      </button>
+      <a class="navbar-brand" >Mi pedido actual</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<script>
+
+$('#carro').hide();
+
+</script>
+</div>
+    
+         <script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+	
+	if(parseInt(localStorage.getItem("pk_usuario"))>0)
+	   {
+		   $('#login').hide();
+		   $('#registro').hide();
+		    
+		}
+		else 
+		{
+			$('#home').hide();
+		   $('#registro').hide();
+			
+		}
+</script>
+
+
+</body>
+</html>
