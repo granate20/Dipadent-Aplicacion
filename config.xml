@@ -1,8 +1,8 @@
 <?xml version='1.1' encoding='utf-8'?>
 <widget id="com.cazzaro.application" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Cazzaro App</name>
+    <name>Dipadent</name>
     <description>
-       Cazzaro App
+       Aplicación de la distribuidora odontológica más conocida de Mar del Plata, en donde podes realizar consultas desde tu teléfono.
     </description>
     <author email="leo_reloaded@hotmail.com">
         Granate20
