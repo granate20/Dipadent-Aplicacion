@@ -1,5 +1,5 @@
 <?xml version='1.1' encoding='utf-8'?>
-<widget id="com.cazzaro.application" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.dipadent.application" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Dipadent</name>
     <description>
        Aplicación de la distribuidora odontológica más conocida de Mar del Plata, en donde podes realizar consultas desde tu teléfono.
@@ -54,6 +54,15 @@
     <access origin="http://127.0.0.1*" />
     <access origin="*" />
     <content src="index.html" />
-    
-    <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" />
+      <gap:plugin name="org.apache.cordova.battery-status" />
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.media" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" /> 
 </widget>
