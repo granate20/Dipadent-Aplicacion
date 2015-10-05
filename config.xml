@@ -52,6 +52,7 @@
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" /> 
 
     <access origin="http://127.0.0.1*" />
+    <access origin="http://www.dipadent.com.ar" />
     <access origin="*" />
     <content src="index.html" />
       <gap:plugin name="org.apache.cordova.battery-status" />
@@ -64,5 +65,5 @@
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
-	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" /> 
+	
 </widget>
